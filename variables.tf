@@ -28,13 +28,3 @@ variable "cloudflare_dns_liam_dmarc" {
   type        = string
   description = "Cloudflare Website Domain Liam dmark"
 }
-
-variable "cloudflare_dns_liam_dkim" {
-  type        = string
-  description = "Cloudflare Website Domain Liam dkim"
-}
-
-variable "cloudflare_dns_liam_spf" {
-  type        = string
-  description = "Cloudflare Website Domain Liam spf1"
-}

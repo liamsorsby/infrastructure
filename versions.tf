@@ -11,3 +11,13 @@ terraform {
     }
   }
 }
+
+terraform {
+  cloud {
+    organization = "liamsorsby"
+
+    workspaces {
+      name = "github"
+    }
+  }
+}
