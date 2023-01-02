@@ -37,25 +37,3 @@ resource "cloudflare_record" "vercel_CNAME_record" {
   zone_id = var.cloudflare_zone_id
   value   = "cname.vercel-dns.com."
 }
-
-resource "cloudflare_ruleset" "transform_uri_remove_headers" {
-  zone_id     = var.cloudflare_zone_id
-  name        = "Transform rule for removing HTTP server Header"
-  description = "Remove Headers before reaching client"
-  kind        = "zone"
-  phase       = "http_response_headers_transform"
-  rules {
-    action = "rewrite"
-    action_parameters {
-      headers {
-        name      = "server"
-        operation = "set"
-        value     = "redacted"
-      }
-    }
-
-    expression  = "true"
-    description = "Remove Server Header"
-    enabled     = true
-  }
-}
