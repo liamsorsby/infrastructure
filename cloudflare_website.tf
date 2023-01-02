@@ -49,7 +49,8 @@ resource "cloudflare_ruleset" "transform_uri_remove_headers" {
     action_parameters {
       headers {
         name      = "server"
-        operation = "remove"
+        operation = "set"
+        value     = "redacted"
       }
     }
 
