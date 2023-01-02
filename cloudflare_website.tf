@@ -27,6 +27,7 @@ resource "cloudflare_record" "sorsby_liam_spf" {
 resource "cloudflare_record" "vercel_A_record" {
   name    = "@"
   type    = "A"
+  proxied = true
   zone_id = var.cloudflare_zone_id
   value   = "76.76.21.21"
 }
@@ -34,6 +35,7 @@ resource "cloudflare_record" "vercel_A_record" {
 resource "cloudflare_record" "vercel_CNAME_record" {
   name    = "www"
   type    = "CNAME"
+  proxied = true
   zone_id = var.cloudflare_zone_id
   value   = "cname.vercel-dns.com."
 }
