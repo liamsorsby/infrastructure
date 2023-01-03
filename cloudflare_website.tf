@@ -24,6 +24,14 @@ resource "cloudflare_record" "sorsby_liam_spf" {
   type            = "TXT"
 }
 
+resource "cloudflare_record" "sorsby_liam_google_verification" {
+  allow_overwrite = true
+  zone_id         = var.cloudflare_zone_id
+  name            = "sorsby.co"
+  value           = "google-site-verification=8NduDgGv3rm2P0V3DdI2ID0s7Ws8mWm7o9G94-NCS1E"
+  type            = "TXT"
+}
+
 resource "cloudflare_record" "vercel_A_record" {
   name    = "@"
   type    = "A"
