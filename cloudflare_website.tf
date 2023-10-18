@@ -20,7 +20,7 @@ resource "cloudflare_record" "sorsby_liam_spf" {
   allow_overwrite = true
   zone_id         = var.cloudflare_zone_id
   name            = "sorsby.co"
-  value           = "v=spf1 -all"
+  value           = "v=spf1 include:_spf.mx.cloudflare.net ~all"
   type            = "TXT"
 }
 
