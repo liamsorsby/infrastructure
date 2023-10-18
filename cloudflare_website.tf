@@ -47,8 +47,9 @@ resource "cloudflare_record" "vercel_CNAME_record" {
 }
 
 resource "cloudflare_email_routing_settings" "email_routing_setting" {
-  zone_id = var.cloudflare_zone_id
-  enabled = "true"
+  zone_id     = var.cloudflare_zone_id
+  enabled     = "true"
+  skip_wizard = true
 }
 
 resource "cloudflare_email_routing_catch_all" "email_routing" {
