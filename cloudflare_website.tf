@@ -46,7 +46,7 @@ resource "cloudflare_record" "vercel_CNAME_record" {
   value   = "cname.vercel-dns.com."
 }
 
-resource "cloudflare_email_routing_catch_all" "example" {
+resource "cloudflare_email_routing_catch_all" "email_routing" {
   zone_id = var.cloudflare_zone_id
   name    = "catch all"
   enabled = true
@@ -57,6 +57,6 @@ resource "cloudflare_email_routing_catch_all" "example" {
 
   action {
     type  = "forward"
-    value = [var.cloudflare_email]
+    value = [var.personal_email]
   }
 }

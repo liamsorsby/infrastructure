@@ -85,7 +85,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false -var 'aws_region=${{ secrets.TF_AWS_REGION }}' -var 'cloudflare_email=${{ secrets.TF_CF_EMAIL }}' -var 'cloudflare_api_key=${{ secrets.TF_CF_API_KEY }}' -var 'cloudflare_zone_id=${{ secrets.TF_CF_ZONE_ID }}' -var 'cloudflare_domain=${{ secrets.TF_CF_DOMAIN }}' -var 'cloudflare_dns_liam_dmarc=${{ secrets.TF_CF_DNS_LIAM_DMARC }}'
+      run: terraform plan -input=false -var 'aws_region=${{ secrets.TF_AWS_REGION }}' -var 'cloudflare_email=${{ secrets.TF_CF_EMAIL }}' -var 'personal_email=${{ secrets.TF_PERSONAL_EMAIL }}' -var 'cloudflare_api_key=${{ secrets.TF_CF_API_KEY }}' -var 'cloudflare_zone_id=${{ secrets.TF_CF_ZONE_ID }}' -var 'cloudflare_domain=${{ secrets.TF_CF_DOMAIN }}' -var 'cloudflare_dns_liam_dmarc=${{ secrets.TF_CF_DNS_LIAM_DMARC }}'
 
     - name: Terraform Plan Status
       if: steps.plan.outcome == 'failure'
@@ -95,4 +95,4 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve -input=false -var 'aws_region=${{ secrets.TF_AWS_REGION }}' -var 'cloudflare_email=${{ secrets.TF_CF_EMAIL }}' -var 'cloudflare_api_key=${{ secrets.TF_CF_API_KEY }}' -var 'cloudflare_zone_id=${{ secrets.TF_CF_ZONE_ID }}' -var 'cloudflare_domain=${{ secrets.TF_CF_DOMAIN }}' -var 'cloudflare_dns_liam_dmarc=${{ secrets.TF_CF_DNS_LIAM_DMARC }}'
+      run: terraform apply -auto-approve -input=false -var 'aws_region=${{ secrets.TF_AWS_REGION }}' -var 'cloudflare_email=${{ secrets.TF_CF_EMAIL }}' -var 'personal_email=${{ secrets.TF_PERSONAL_EMAIL }}' -var 'cloudflare_api_key=${{ secrets.TF_CF_API_KEY }}' -var 'cloudflare_zone_id=${{ secrets.TF_CF_ZONE_ID }}' -var 'cloudflare_domain=${{ secrets.TF_CF_DOMAIN }}' -var 'cloudflare_dns_liam_dmarc=${{ secrets.TF_CF_DNS_LIAM_DMARC }}'
