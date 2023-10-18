@@ -51,6 +51,23 @@ resource "cloudflare_email_routing_settings" "email_routing_setting" {
   enabled = "true"
 }
 
+resource "cloudflare_email_routing_rule" "main" {
+  zone_id = var.cloudflare_zone_id
+  name    = "Catch liam"
+  enabled = true
+
+  matcher {
+    type  = "literal"
+    field = "to"
+    value = "liam@sorsby.co"
+  }
+
+  action {
+    type  = "forward"
+    value = [var.personal_email]
+  }
+}
+
 resource "cloudflare_email_routing_catch_all" "email_routing" {
   zone_id = var.cloudflare_zone_id
   name    = "catch all"
