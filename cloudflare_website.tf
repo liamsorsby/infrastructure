@@ -45,3 +45,18 @@ resource "cloudflare_record" "vercel_CNAME_record" {
   zone_id = var.cloudflare_zone_id
   value   = "cname.vercel-dns.com."
 }
+
+resource "cloudflare_email_routing_catch_all" "email_routing" {
+  zone_id = var.cloudflare_zone_id
+  name    = "catch all"
+  enabled = true
+
+  matcher {
+    type = "all"
+  }
+
+  action {
+    type  = "forward"
+    value = [var.personal_email]
+  }
+}

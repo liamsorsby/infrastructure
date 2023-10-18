@@ -6,7 +6,11 @@ variable "aws_region" {
 variable "cloudflare_email" {
   type        = string
   description = "Cloudflare email address"
+}
 
+variable "personal_email" {
+  type        = string
+  description = "personal email address"
 }
 
 variable "cloudflare_api_key" {
